@@ -1,0 +1,22 @@
+public class HelloWorld{
+    static int a[] = {0,1,3,5,1,5}; 
+    static int x = 0;
+     static int root(int p) 
+    { 
+        if (a[p] == p) 
+          return p;
+        else{
+        x = a[p];
+        return root(x); 
+        }
+    } 
+    static boolean connected(int p, int q ){
+        return root(p) == root(q);
+    }
+     
+     public static void main(String []args){
+       
+       
+       System.out.println(root(2));
+     }
+}
