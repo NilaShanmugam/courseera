@@ -1,0 +1,15 @@
+quick find eager:
+ 
+ 
+ public class QuickFind(){
+  static boolean connected(int p, int q){
+  return id[p] == id[q];
+  }
+  
+  static int union(int p, int q){
+  if(i==p){
+  id[p] = id[q];
+  }
+  }
+  
+ }
