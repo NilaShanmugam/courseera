@@ -1,0 +1,54 @@
+
+import java.util.*;
+class stack_implement{
+    int top =-1;
+    int a[] = new int[1000];
+    void push_a(int x){
+        if(top>999){
+            System.out.println("Stack Overflow");
+        }
+        else{
+        a[++top] = x;
+        }
+    }
+    int pop_a(){
+        if(top<0){
+            System.out.println("Stack Underflow");
+            return 0;
+        }
+        else{
+            int x = a[--top];
+            return x;
+        }
+    }
+    
+    void peek(){
+        System.out.println("Hello");
+        System.out.println(a[top]);
+    }
+    
+    boolean isEmpty(){
+        if(top<0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+public class HelloWorld{
+     
+     public static void main(String []args){
+          
+          stack_implement s = new stack_implement();
+          s.push_a(5);
+          s.push_a(4);
+          s.pop_a();
+          s.push_a(4);
+          boolean empty=s.isEmpty();
+          s.peek();
+          System.out.println(empty);
+           System.out.println(s);
+          
+     }
+}
