@@ -1,0 +1,105 @@
+
+import java.util.*;
+class stack_implement{
+    StackNode head;
+    static class StackNode {
+        int data;
+        StackNode next;
+ 
+        StackNode(int data) { this.data = data; }
+    }
+    void push_a(int data){
+        StackNode newNode = new StackNode(data);
+        if(head==null){
+            head = newNode;
+        }
+        else{
+            newNode.next = head;
+            head = newNode;
+        }
+        StackNode current = head;
+        // while(current!=null){
+        //     System.out.println(current.data);
+        //     current = current.next;
+        // }
+    }
+    
+    int pop(){
+        int x = 0;
+        if(head==null){
+            System.out.println("Stack overflow");
+        }
+        else{
+            x = head.data;
+            head = head.next;
+        }
+        
+        return x;
+        
+    }
+    
+    
+    int min(){
+        int min_num = 10000000;
+        StackNode current_min = head;
+        while(current_min!=null){
+            if(current_min.data< min_num){
+                min_num = current_min.data;
+            }
+            current_min = current_min.next;
+        }
+        return min_num;
+    }
+    
+    int max(){
+        int max_num = -1;
+        StackNode current_max = head;
+        while(current_max!=null){
+            if(current_max.data> max_num){
+                max_num = current_max.data;
+            }
+            current_max = current_max.next;
+        }
+        return max_num;
+    }
+    
+    int peek(){
+        int x =0;
+        if(head==null){
+            System.out.println("Stack overflow");
+        }
+        else{
+            x = head.data;
+        }
+        
+        return x;
+    }
+    
+    boolean isEmpty(){
+        if(head == null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+public class HelloWorld{
+     
+     public static void main(String []args){
+          
+          stack_implement s = new stack_implement();
+          s.push_a(5);
+          s.push_a(6);
+          s.push_a(7);
+          int s_peek = s.peek();
+          int s_min = s.min();
+          int s_max = s.max();
+          int s_pop = s.pop();
+          System.out.println(s_peek);
+          System.out.println(s_min);
+          System.out.println(s_max);
+           System.out.println(s_pop);
+          
+     }
+}
