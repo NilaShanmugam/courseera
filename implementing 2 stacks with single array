@@ -1,82 +1,98 @@
 import java.util.*;
 class stack_implement{
-    int n = 5;
+    int n = 10;
     int a[] = new int[n];
-    int top1 = n/2+1;
+    int top1 = 0;
     int top2 = n/2;
-   
     void push_a(int x){
-       if(top1 > 0){
-        top1 = --top1;
-        a[top1] = x;
-       
-       }
-       else{
-           System.out.println("Stack Overflow A");
-       }
+        if(top1<n/2){
+            a[top1] = x;
+            top1 = top1+1;
+        }
+        else{
+            System.out.println("Stack Overflow A");
+        }
+        
     }
     
     void push_b(int y){
-        if(top2 <= n-1){
+        if(top2<=n-1){
             a[top2] = y;
             top2 = top2+1;
-            
         }
         else{
-           System.out.println("Stack Overflow B");
-       }
+            System.out.println("Stack Overflow B");
+        }
     }
     
-    // void push_b(int x){
-    //     if(top>999){
-    //         System.out.println("Stack Overflow");
-    //     }
-    //     else{
-    //     a[++top] = x;
-    //     }
-    // }
     int pop_a(){
-        System.out.println("pOP"+top2);
-        return top2;
+        if(top1<0){
+              System.out.println("Stack UnderFlow A");
+              return 0;
+        }
+        else{
+        top1 = top1-1;
+        return a[top1];
+        }
     }
     
     int pop_b(){
-        if(top2<0){
-            System.out.println("Stack Underflow");
+        if(top2<n/2){
+            System.out.println("Stack UnderFlow B");
             return 0;
         }
         else{
-            int x = a[--top2];
-            return x;
+         top2 = top2-1;
+         return a[top2];
         }
     }
     
-    // void peek(){
-    //     System.out.println("Hello");
-    //     System.out.println(a[top]);
-    // }
+    int peek_a(){
+        return a[top1];
+    }
     
-    // boolean isEmpty(){
-    //     if(top<0){
-    //         return true;
-    //     }
-    //     else{
-    //         return false;
-    //     }
-    // }
+    int peek_b(){
+       
+        return a[top2-1];
+    }
+    
+    
 }
 public class HelloWorld{
      
      public static void main(String []args){
           
           stack_implement s = new stack_implement();
-          s.push_a(5);
+          s.push_a(1);
+          s.push_a(2);
+          s.push_a(3);
           s.push_a(4);
+          s.push_a(5);
+
           s.push_b(6);
           s.push_b(7);
-          s.push_b(6);
-          int pop_1 = s.pop_a();
-           System.out.println(pop_1);
+          s.push_b(8);
+          s.push_b(9);
+          s.push_b(10);
+          
+          s.pop_a();
+          s.pop_a();
+          s.pop_a();
+          s.pop_a();
+          
+          s.pop_b();
+          int x = s.peek_a();
+           int y = s.peek_b();
+         
+          
+         
+           System.out.println(x);
+            System.out.println(y);
+          
+         
           
      }
 }
+    
+    
+     
