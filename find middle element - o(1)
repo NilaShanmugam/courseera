@@ -1,0 +1,73 @@
+public class HelloWorld{
+class DLLNode 
+    { 
+        DLLNode prev; 
+        int data; 
+        DLLNode next; 
+        DLLNode(int d){data=d;} 
+    } 
+      
+    /* Representation of the stack data structure that supports findMiddle() 
+       in O(1) time.  The Stack is implemented using Doubly Linked List. It 
+       maintains pointer to head node, pointer to middle node and count of 
+       nodes */
+    class myStack 
+    { 
+        DLLNode head; 
+        DLLNode mid; 
+        int count; 
+    } 
+      
+  
+    /* Function to create the stack data structure */
+    myStack createMyStack() 
+    { 
+        myStack ms = new myStack(); 
+        ms.count = 0; 
+        return ms; 
+    } 
+    
+    void push(myStack ms,int new_data){
+         DLLNode new_DLLNode = new DLLNode(new_data); 
+         new_DLLNode.prev = null;
+         new_DLLNode.next = ms.head;
+         ms.count = ms.count+1;
+         
+         if(ms.count==1){
+             ms.mid = new_DLLNode;
+         }
+         else{
+             /*when it is odd*/
+              ms.head.prev = new_DLLNode; 
+             if(ms.count%2!=0){
+                 ms.mid = ms.mid.prev;
+             }
+             
+         }
+         
+         /* move head to point to the new DLLNode */
+        ms.head = new_DLLNode; 
+    }
+    
+   int findMiddle(myStack ms) 
+    { 
+        System.out.println(ms.count);
+         System.out.println(ms.mid);
+        
+        if(ms.count == 0) 
+        { 
+            System.out.println("Stack is empty now"); 
+            return -1; 
+        } 
+        return ms.mid.data; 
+    } 
+     public static void main(String []args){
+         HelloWorld hl = new HelloWorld();
+          myStack ms  = hl.createMyStack();
+          hl.push(ms,1);
+          hl.push(ms,2);
+          hl.push(ms,3);
+         int x = hl.findMiddle(ms);
+        System.out.println("Hello World"+x);
+     }
+}
