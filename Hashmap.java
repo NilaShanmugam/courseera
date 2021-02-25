@@ -19,7 +19,7 @@ int count = hm.get(arr[i]);
      }
 
 //Iteration
-for(Map.Entry m : hm.emptySet()){
+for(Map.Entry m : hm.entrySet()){
   System.out.println(m.getKey(),m.getValue());
 }
 }
